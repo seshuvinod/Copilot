@@ -10,11 +10,6 @@ namespace Copilot.Controllers
 
         public HomeController(ILogger<HomeController>? logger)
         {
-            logger = null;
-            if(logger == null)
-            {
-                return;
-            }
             _logger = logger;
         }
 
