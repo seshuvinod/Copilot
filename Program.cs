@@ -1,13 +1,24 @@
 var builder = WebApplication.CreateBuilder(args);
-//builder.Services.AddControllersWithViews();
+
+// Add MVC services
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
-app.MapPost("/", (HttpContext context) => context.Response.WriteAsync("Hello From MVC"));
-//app.UseHttpsRedirection();
-//app.UseStaticFiles();
-//app.MapControllers();
-//app.MapControllerRoute(
-//name: "default",
-//pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// Configure middleware
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
