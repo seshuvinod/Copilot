@@ -16,7 +16,7 @@ namespace Copilot.Controllers
         [Route("/")]
         public IActionResult Index()
         {
-            ViewBag.Name = "VINOD Feature";
+            ViewBag.Name = "VINOD M1 hhhh checkout f2";
                 return View();
         }
 
